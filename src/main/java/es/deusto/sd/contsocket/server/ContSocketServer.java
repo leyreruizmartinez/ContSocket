@@ -27,15 +27,16 @@ public class ContSocketServer {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true)
         ) {
-
+        	System.out.println("Client connected: " + socket.getInetAddress());
             String msg = in.readLine();
             if (msg == null) return;
 
             String[] p = msg.split(";");
             String cmd = p[0];
-
+            System.out.println("Received command: " + cmd);
             switch (cmd) {
                 case "GET_CAPACITY":
+                	System.out.println("Processing GET_CAPACITY for date: " + p[1]);
                     out.println(service.getCapacity(p[1]));
                     break;
 

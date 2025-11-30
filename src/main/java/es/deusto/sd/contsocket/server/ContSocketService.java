@@ -8,9 +8,9 @@ public class ContSocketService {
     private Map<String, Integer> capacity = new HashMap<>();
 
     public ContSocketService() {
-        capacity.put("2025-11-28", 120);
-        capacity.put("2025-11-29", 100);
-        capacity.put("2025-11-30", 140);
+        capacity.put("28112025", 120);
+        capacity.put("29112025", 100);
+        capacity.put("30112025", 140);
     }
 
     public int getCapacity(String date) {
