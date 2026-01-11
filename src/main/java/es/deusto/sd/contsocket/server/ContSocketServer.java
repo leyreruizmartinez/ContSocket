@@ -41,10 +41,28 @@ public class ContSocketServer {
                     break;
 
                 case "NOTIFY":
-                    out.println(service.notifyAssignment(
-                        Integer.parseInt(p[1]),
-                        Integer.parseInt(p[2])
-                    ));
+                    // Support two formats for backwards compatibility:
+                    // 1) NOTIFY;<dumpsters>;<containers>
+                    // 2) NOTIFY;<plantName>;<dumpster>;<containers>  <-- format sent by Ecoembes gateway
+                    try {
+                        if (p.length == 3) {
+                            // old format
+                            out.println(service.notifyAssignment(
+                                Integer.parseInt(p[1]),
+                                Integer.parseInt(p[2])
+                            ));
+                        } else if (p.length == 4) {
+                            String plantName = p[1];
+                            int dumpster = Integer.parseInt(p[2]);
+                            int containers = Integer.parseInt(p[3]);
+                            System.out.println("NOTIFY for plant: " + plantName + " dumpster=" + dumpster + " containers=" + containers);
+                            out.println(service.notifyAssignment(dumpster, containers));
+                        } else {
+                            out.println("ERROR");
+                        }
+                    } catch (NumberFormatException nfe) {
+                        out.println("ERROR");
+                    }
                     break;
 
                 default:

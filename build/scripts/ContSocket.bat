@@ -74,7 +74,7 @@ set CLASSPATH=%APP_HOME%\lib\ContSocket.jar;%APP_HOME%\lib\json-20240303.jar;%AP
 
 
 @rem Execute ContSocket
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %CONT_SOCKET_OPTS%  -classpath "%CLASSPATH%" es.deusto.ingenieria.sd.translation.server.TranslationServer %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %CONT_SOCKET_OPTS%  -classpath "%CLASSPATH%" es.deusto.sd.contsocket.server.ContSocketServer %*
 
 :end
 @rem End local scope for the variables with windows NT shell

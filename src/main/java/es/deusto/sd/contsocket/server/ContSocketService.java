@@ -2,6 +2,8 @@ package es.deusto.sd.contsocket.server;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ContSocketService {
 
@@ -11,6 +13,10 @@ public class ContSocketService {
         capacity.put("28112025", 120);
         capacity.put("29112025", 100);
         capacity.put("30112025", 140);
+
+        // Ensure today's date has a reasonable default capacity so assignments using LocalDate.now() work
+        String today = LocalDate.now().format(DateTimeFormatter.ofPattern("ddMMyyyy"));
+        capacity.putIfAbsent(today, 200); // default capacity for today
     }
 
     public int getCapacity(String date) {

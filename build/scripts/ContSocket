@@ -213,7 +213,7 @@ DEFAULT_JVM_OPTS=""
 
 set -- \
         -classpath "$CLASSPATH" \
-        es.deusto.ingenieria.sd.translation.server.TranslationServer \
+        es.deusto.sd.contsocket.server.ContSocketServer \
         "$@"
 
 # Stop when "xargs" is not available.
