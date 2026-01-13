@@ -26,6 +26,10 @@ public class ContSocketService {
     public String notifyAssignment(int dumpsters, int containers) {
         System.out.println("Assignment received → dumpsters=" + dumpsters
                 + " containers=" + containers);
+        
+        String today = LocalDate.now().format(DateTimeFormatter.ofPattern("ddMMyyyy"));
+        int currentCapacity = capacity.get(today);
+        capacity.put(today, currentCapacity-containers); // default capacity for today
         return "OK";
     }
 }
